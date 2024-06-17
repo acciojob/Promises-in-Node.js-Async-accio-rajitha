@@ -16,13 +16,19 @@ function readFileAsync(filePath) {
 
 function modifyText(text) {
   return new Promise((resolve, reject) => {
-    // TODO: Convert text to uppercase and reverse it
+    // Convert text to uppercase
+    const upperCaseText = text.toUpperCase();
+    // Reverse the text
+    const reversedText = upperCaseText.split('').reverse().join('');
+    resolve(reversedText);
   });
 }
 
+// Main logic
 readFileAsync(filePath)
   .then((data) => modifyText(data))
   .then((modifiedText) => {
+    console.log("Modified Text:");
     console.log(modifiedText);
   })
   .catch((error) => {
